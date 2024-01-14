@@ -1,0 +1,49 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix music: <http://example.com/music/>.
+
+(music:Song1 music:Song2 music:Song3 music:Song4 music:Song5 music:Song6 music:Song7 music:Song8) rdf:type rdfs:Class.
+
+music:Song1 dbo:genre music:Rock;
+    rdf:seeAlso "<http://jk.com>".
+
+music:Song2 dbo:genre music:Pop;
+    rdf:seeAlso "URL <http://jk>".
+
+music:Song3 dbo:genre music:HipHop;
+    rdf:seeAlso "URL <http://jk>".
+
+music:Song4 dbo:genre music:Jazz;
+    rdf:seeAlso "URL <http://jk>".
+
+music:Song5 dbo:genre music:Soul;
+    rdf:seeAlso "URL <http://jk>".
+
+music:Song6 dbo:genre music:Classical;
+    rdf:seeAlso "URL <http://jk>".
+
+music:Song7 dbo:genre music:HeavyMetal;
+    rdf:seeAlso "URL <http://jk>".
+
+music:Song8 dbo:genre music:Lounge;
+    rdf:seeAlso "URL <http://jk>".
+
+music:MusicGenre rdf:type rdfs:Class.
+
+# 8 musical genres
+(music:Rock music:Pop music:HipHop music:Jazz music:Soul music:Classical music:HeavyMetal music:Lounge) rdf:type music:MusicGenre.
+
+
+music:suggestedRate rdf:type rdf:Property;
+    rdf:domain music:MusicGenre;
+    rdf:range rdfs:Literal.
+
+music:Rock music:suggestedRate 50.# 170).
+music:Pop music:suggestedRate 60. #180 190).
+music:HipHop music:suggestedRate 70. #160 200).
+music:Jazz music:suggestedRate 120. #100
+music:Soul music:suggestedRate 80. # 140).
+music:Classical music:suggestedRate (70 110).
+music:HeavyMetal music:suggestedRate 40.
+music:Lounge music:suggestedRate (130 150).
