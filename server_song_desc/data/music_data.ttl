@@ -1,49 +1,98 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix music: <http://example.com/music/>.
+@prefix music: <http://localhost:3001/#> .
+@prefix schema: <http://schema.org/>.
+@prefix : <http://localhost:3001/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-(music:Song1 music:Song2 music:Song3 music:Song4 music:Song5 music:Song6 music:Song7 music:Song8) rdf:type rdfs:Class.
-
-music:Song1 dbo:genre music:Rock;
-    rdf:seeAlso "<http://jk.com>".
-
-music:Song2 dbo:genre music:Pop;
-    rdf:seeAlso "URL <http://jk>".
-
-music:Song3 dbo:genre music:HipHop;
-    rdf:seeAlso "URL <http://jk>".
-
-music:Song4 dbo:genre music:Jazz;
-    rdf:seeAlso "URL <http://jk>".
-
-music:Song5 dbo:genre music:Soul;
-    rdf:seeAlso "URL <http://jk>".
-
-music:Song6 dbo:genre music:Classical;
-    rdf:seeAlso "URL <http://jk>".
-
-music:Song7 dbo:genre music:HeavyMetal;
-    rdf:seeAlso "URL <http://jk>".
-
-music:Song8 dbo:genre music:Lounge;
-    rdf:seeAlso "URL <http://jk>".
-
-music:MusicGenre rdf:type rdfs:Class.
-
-# 8 musical genres
-(music:Rock music:Pop music:HipHop music:Jazz music:Soul music:Classical music:HeavyMetal music:Lounge) rdf:type music:MusicGenre.
+:Song1 rdf:type music:Rock ;
+                 music:suggestedRate "50"^^xsd:integer, "170"^^xsd:integer;
+                 schema:encodingFormat "audio/wav";
+                 rdf:seeAlso "<http://jk.com>".
 
 
-music:suggestedRate rdf:type rdf:Property;
-    rdf:domain music:MusicGenre;
-    rdf:range rdfs:Literal.
+:Song2 rdf:type music:Pop ;
+                 music:suggestedRate "60"^^xsd:integer, "180"^^xsd:integer, "190"^^xsd:integer;
+                 schema:encodingFormat "audio/wav";
+                 rdf:seeAlso "<http://jk.com>".
 
-music:Rock music:suggestedRate 50.# 170).
-music:Pop music:suggestedRate 60. #180 190).
-music:HipHop music:suggestedRate 70. #160 200).
-music:Jazz music:suggestedRate 120. #100
-music:Soul music:suggestedRate 80. # 140).
-music:Classical music:suggestedRate (70 110).
-music:HeavyMetal music:suggestedRate 40.
-music:Lounge music:suggestedRate (130 150).
+:Song3 rdf:type music:HipHop ;
+                 music:suggestedRate "70"^^xsd:integer, "160"^^xsd:integer, "200"^^xsd:integer;
+                 schema:encodingFormat "audio/wav";
+                 rdf:seeAlso "<http://jk.com>".
+
+:Song4 rdf:type music:Jazz ;
+                 music:suggestedRate "100"^^xsd:integer, "120"^^xsd:integer;
+                 schema:encodingFormat "audio/wav";
+                 rdf:seeAlso "<http://jk.com>".
+
+:Song5 rdf:type music:Soul ;
+                 music:suggestedRate "80"^^xsd:integer, "140"^^xsd:integer;
+                 schema:encodingFormat "audio/wav";
+                 rdf:seeAlso "<http://jk.com>".
+
+:Song6 rdf:type music:Classical ;
+                 music:suggestedRate "70"^^xsd:integer, "110"^^xsd:integer;
+                 schema:encodingFormat "audio/wav";
+                 rdf:seeAlso "<http://jk.com>".
+
+:Song7 rdf:type music:HeavyMetal ;
+                 music:suggestedRate "40"^^xsd:integer, "90"^^xsd:integer;
+                 schema:encodingFormat "audio/wav";
+                 rdf:seeAlso "<http://jk.com>".
+
+:Song8 rdf:type music:Lounge ;
+                 music:suggestedRate "130"^^xsd:integer, "150"^^xsd:integer;
+                 schema:encodingFormat "audio/wav";
+                 rdf:seeAlso "<http://jk.com>".
+
+
+
+# (music:Song1 music:Song2 music:Song3 music:Song4 music:Song5 music:Song6 music:Song7 music:Song8) rdf:type rdfs:Class.
+
+# music:Song1 dbo:genre music:Rock;
+#     rdf:seeAlso "<http://jk.com>".
+
+# music:Song1 dbo:genre music:Rock;
+#     rdf:seeAlso "<http://jk.com>".
+
+# music:Song2 dbo:genre music:Pop;
+#     rdf:seeAlso "URL <http://jk>".
+
+# music:Song3 dbo:genre music:HipHop;
+#     rdf:seeAlso "URL <http://jk>".
+
+# music:Song4 dbo:genre music:Jazz;
+#     rdf:seeAlso "URL <http://jk>".
+
+# music:Song5 dbo:genre music:Soul;
+#     rdf:seeAlso "URL <http://jk>".
+
+# music:Song6 dbo:genre music:Classical;
+#     rdf:seeAlso "URL <http://jk>".
+
+# music:Song7 dbo:genre music:HeavyMetal;
+#     rdf:seeAlso "URL <http://jk>".
+
+# music:Song8 dbo:genre music:Lounge;
+#     rdf:seeAlso "URL <http://jk>".
+
+# music:MusicGenre rdf:type rdfs:Class.
+
+# # 8 musical genres
+# (music:Rock music:Pop music:HipHop music:Jazz music:Soul music:Classical music:HeavyMetal music:Lounge) rdf:type music:MusicGenre.
+
+
+# music:suggestedRate rdf:type rdf:Property;
+#     rdf:domain music:MusicGenre;
+#     rdf:range rdfs:Literal.
+
+# music:Rock music:suggestedRate 50, 170.
+# music:Pop music:suggestedRate 60, 180, 190.
+# music:HipHop music:suggestedRate 70, 160, 200.
+# music:Jazz music:suggestedRate 120, 100.
+# music:Soul music:suggestedRate 80, 140.
+# music:Classical music:suggestedRate 70, 110.
+# music:HeavyMetal music:suggestedRate 40, 90.
+# music:Lounge music:suggestedRate 130, 150.

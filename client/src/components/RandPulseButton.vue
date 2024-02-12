@@ -1,6 +1,10 @@
 <template>
     <div>
-        <button @click="getRandValue">Get Random Pulse</button>
+        <button class="btn btn-fill btn-neutral" @click="getRandValue">
+        <i class="fa fa-apple"></i> Get Random Pulse
+        <!-- <i class=""><RandPulseButton /></i> -->
+        </button>
+        <!-- <button @click="getRandValue">Get Random Pulse</button> -->
         <div v-if="randBMP !== null" class="result-container">
             <p class="result-label">Random Value:</p>
             <p class="result-value">{{ randBMP }}</p>
@@ -26,7 +30,7 @@ export default Vue.extend({
     methods: {
         async getRandValue() {
             try {
-                const response = await fetch('http://localhost:3000/getRandPulse');
+                const response = await fetch('http://localhost:3000/currentBPM');
                 const data = await response.json();
                 this.randBMP = data.randBMP;
             } catch(err){
@@ -38,16 +42,21 @@ export default Vue.extend({
 </script>
 
 <style>
+@import '../assets/css/pe-icon-7-stroke.css';
+@import '../assets/css/landing-page.css';
+@import '../assets/css/bootstrap.css';
+
 .result-container {
     margin-top: 20px;
     text-align: center;
 }
 .result-label {
     font-weight: bold;
+    color:white;
 }
 .result-value {
-    color:purple;
     font-size: 20px;
     margin-top: 5px;
+    color:white;
 }
 </style>

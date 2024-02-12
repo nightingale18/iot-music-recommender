@@ -5,7 +5,7 @@ function genNormDistrib(mean, std, size) {
     const pulseDist = [];
     const distribution = [];
 
-    for (let el = 40;el < size; el++) {
+    for (let el=12;el < size; el++) {
         let expDegree = -0.5*(((el-mean)/std)**2);
         let eq = (1/(std*Math.sqrt(2*Math.PI)))*Math.exp(expDegree);
         probsDist.push(eq);
@@ -25,5 +25,6 @@ function getRandValue(distribution, pulseDist) {
 }
 
 const [distribution, pulseDist] = genNormDistrib(mean, std, size);
+const [distribDiv, pulseDistDiv] = genNormDistrib(12, 10, 22);
 
-module.exports = {distribution, pulseDist, getRandValue};
+module.exports = {distribution, pulseDist, getRandValue, genNormDistrib, distribDiv, pulseDistDiv};

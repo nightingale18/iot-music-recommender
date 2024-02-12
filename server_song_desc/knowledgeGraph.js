@@ -4,11 +4,13 @@ const fs = require('fs');
 function getKGData(bmp) {
     const query = `\
     prefix dbo: <http://dbpedia.org/ontology/> \
-    prefix music: <http://example.com/music/> \
+    prefix music: <http://localhost:3001/#> \
     prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
-    select ?songURI where {\
-        ?song dbo:genre ?musicGenre .\
-        ?musicGenre music:suggestedRate ?bmp .\
+    prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> \
+    select ?songURI ?gComment where {\
+        ?song music:suggestedRate ?bmp .\
+        ?song rdf:type ?musicGenre. \
+        ?musicGenre rdfs:comment ?gComment.\
         ?song rdf:seeAlso ?songURI.\
         filter(?bmp = ${bmp}) \
     }`;
@@ -16,6 +18,11 @@ function getKGData(bmp) {
     try {
         return Promise.resolve()
         .then(() => urdf.clear())
+        .then(() => {
+            const data = fs.readFileSync('data/music.ttl', 'utf-8');
+            const opts = { format: 'text/turtle' };
+            return urdf.load(data, opts);
+        })
         .then(() => {
             const data = fs.readFileSync('data/music_data.ttl', 'utf-8');
             const opts = { format: 'text/turtle' };
