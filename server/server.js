@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { distribution, pulseDist, getRandValue, genNormDistrib, distribDiv, pulseDistDiv } = require('./helper');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -43,7 +43,7 @@ app.get('/thingDescription', (req, res) => {
             "currentHeartRate": {
                 "data": {"type": "object"},
                 "forms": [{
-                    "href": "http://localhost:3000/currentBPM"
+                    "href": "http://localhost:3001/currentBPM"
                 }]
             }
         }

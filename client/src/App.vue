@@ -83,9 +83,9 @@
                 <div class="row">
                     <div class="col-md-50">
                         <div class="description">
-                            <h2>Showcase 1 - Be serious about your music.</h2>
+                            <h2>IoT music recommender</h2>
                             <br>
-                            <h5>PlayIT! will become your favorite. It offers a list of features long enough that we could sit here talking about it all day. But, if you're serious about your music, you should definitely take a look. Find us one every market!</h5>
+                            <h5>It provides such features as: random pulse generator, song suggestion based on the pulse data via a Solid Server and a Knowledge Graph and a real-time song's suggestion to multiple devices via on the Thing Description. </h5>
                         </div>
                         <div class="buttons">
                             <RandPulseButton />
@@ -94,12 +94,16 @@
                             <!-- <i class="fa fa-apple"></i> Appstore -->
                             <!-- <i class=""><RandPulseButton /></i> -->
                             <!-- </button> -->
-                            <button class="btn btn-simple btn-neutral">
-                            <i class="fa fa-android"></i>
-                            </button>
-                            <button class="btn btn-simple btn-neutral">
-                            <i class="fa fa-windows"></i>
-                            </button>
+
+                            <!-- <vue-sound
+                                livestream
+                                show-download
+                                title="The Show"
+                                title-link="http://www.google.com"
+                                details="Lorem Ipsum Dolor Sit Amet"
+                                details-link="http://www.bing.com"
+                                file="http://www.hochmuth.com/mp3/Haydn_Cello_Concerto_D-1.mp3"
+                            /> -->
                         </div>
                     </div>
                     <!-- <div class="col-md-5  hidden-xs">
@@ -110,38 +114,38 @@
                 </div>
             </div>
         </div>
-        <div class="section section-gray section-clients">
-            <div class="container text-center">
-                <h4 class="header-text">They were the first to go PlayIT</h4>
-                <p>
+        <!-- <div class="section section-gray section-clients"> -->
+            <!-- <div class="container text-center"> -->
+                <!-- <h4 class="header-text">They were the first to go PlayIT</h4> -->
+                <!-- <p>
                     Build customer confidence by listing your users! Anyone who has used your service and has been pleased with it should have a place here! From Fortune 500 to start-ups, all your app enthusiasts will be glad to be featured in this section. Moreover, users will feel confident seing someone vouching for your product!<br>
-                </p>
-                <div class="logos">
-                    <ul class="list-unstyled">
+                </p> -->
+                <!-- <div class="logos"> -->
+                    <!-- <ul class="list-unstyled">
                         <li ><img src="assets/img/logos/adobe.png"/></li>
                         <li ><img src="assets/img/logos/zendesk.png"/></li>
                         <li ><img src="assets/img/logos/ebay.png"/></i>
                         <li ><img src="assets/img/logos/evernote.png"/></li>
                         <li ><img src="assets/img/logos/airbnb.png"/></li>
                         <li ><img src="assets/img/logos/zappos.png"/></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+                    </ul> -->
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </div> -->
         <div class="section section-presentation">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="description">
-                            <h4 class="header-text">It's beautiful</h4>
+                            <!-- <h4 class="header-text">It's beautiful</h4>
                             <p>We are 'Play It!', a startup specialising in funky headphones and speakers. We make and sell the mechanisms that let you listen to your favourite music everywhere! With our prestigious craftsmanship, remarkable client care and passion for design, you could say we’re the ‘all singing, all dancing’ kind. We think you’ll love working with us.</p>
                             <p>We make the objects that bring music closer to you. If you want to play music at home on a bad ass box of take in on the road with headphones, we make all the options possible.
-                            </p>
+                            </p> -->
                         </div>
                     </div>
-                    <div class="col-md-5 col-md-offset-1 hidden-xs">
+                    <!-- <div class="col-md-5 col-md-offset-1 hidden-xs">
                         <img src="assets/img/showcases/showcase-1/iphones.png"/ style="top:-50px">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -150,7 +154,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div id="description-carousel" class="carousel fade" data-ride="carousel">
-                            <div class="carousel-inner">
+                            <!-- <div class="carousel-inner">
                                 <div class="item">
                                     <img src="assets/img/showcases/showcase-1/examples/home_3.jpg" alt="">
                                 </div>
@@ -160,21 +164,21 @@
                                 <div class="item">
                                     <img src="assets/img/showcases/showcase-1/examples/home_1.jpg" alt="">
                                 </div>
-                            </div>
-                            <ol class="carousel-indicators carousel-indicators-orange">
+                            </div> -->
+                            <!-- <ol class="carousel-indicators carousel-indicators-orange">
                                 <li data-target="#description-carousel" data-slide-to="0" class=""></li>
                                 <li data-target="#description-carousel" data-slide-to="1" class="active"></li>
                                 <li data-target="#description-carousel" data-slide-to="2" class=""></li>
-                            </ol>
+                            </ol> -->
                         </div>
                     </div>
-                    <div class="col-md-5 col-md-offset-1">
+                    <!-- <div class="col-md-5 col-md-offset-1">
                         <h4 class="header-text">Easy to use</h4>
                         <p>
                             With all the apps that users love! Make it easy for users to share, like, post and tweet their favourite things from the app. Be sure to let users know they continue to remain connected while using your app!
                         </p>
                         <a href="http://www.creative-tim.com/product/awesome-landing-page" id="Demo1" class="btn btn-warning btn-fill" data-button="warning">Get Free Demo</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

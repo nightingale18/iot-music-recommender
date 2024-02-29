@@ -30,7 +30,7 @@ export default Vue.extend({
     methods: {
         async getRandValue() {
             try {
-                const response = await fetch('http://localhost:3000/currentBPM');
+                const response = await fetch('http://localhost:3001/currentBPM');
                 const data = await response.json();
                 this.randBMP = data.randBMP;
             } catch(err){
@@ -42,9 +42,9 @@ export default Vue.extend({
 </script>
 
 <style>
-@import '../assets/css/pe-icon-7-stroke.css';
-@import '../assets/css/landing-page.css';
-@import '../assets/css/bootstrap.css';
+@import '../../assets/css/pe-icon-7-stroke.css';
+@import '../../assets/css/landing-page.css';
+@import '../../assets/css/bootstrap.css';
 
 .result-container {
     margin-top: 20px;
