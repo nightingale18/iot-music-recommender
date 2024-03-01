@@ -27,7 +27,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import PlaySong from './PlaySong.vue';
 import SongDescButton from './SongDescButton.vue';
 
 const { Servient } = require("@node-wot/core");
@@ -35,8 +34,7 @@ const { HttpClientFactory } = require("@node-wot/binding-http");
 
 export default Vue.extend({
     components: {
-        PlaySong,
-        SongDescButton,
+        SongDescButton
     },
     data() {
         return {

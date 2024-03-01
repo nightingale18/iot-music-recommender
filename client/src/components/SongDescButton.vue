@@ -1,23 +1,13 @@
 <template>
     <div>
         <button @click="getSongDesc">Suggest a song</button>
-        <!-- <div v-if="this.randBMP !== null" class="result-container">
-            <p class="result-label">Passed Value:</p>
-            <p class="result-value">{{ this.randBMP }}</p>
-        </div> -->
+
         <div v-if="this.info !== null" class="result-container">
-            <!-- <p class="result-label">Song's URI:</p>
-            <p class="result-value">{{ this.url }}</p> -->
             <a v-bind:href="this.info">Song's recommendation</a>
-            <vue-sound
-                livestream
-                show-download
-                title="The Show"
-                title-link="http://www.google.com"
-                details="Lorem Ipsum Dolor Sit Amet"
-                details-link="http://www.bing.com"
-                file="this.info"
-            />
+
+            <div id="app">
+                <audio ref="myAudio" :src="audioSource" controls autoplay></audio>
+            </div>
         </div>
 
     </div>
@@ -26,6 +16,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import urdf from 'urdf';
+
 
 export default Vue.extend({
     props: {
@@ -36,8 +27,28 @@ export default Vue.extend({
             randBMP: null,
             info: null,
             url: null,
+            currentAudioName: '',
+            audioSource: null,
+            audioList: [
+                {
+                name: 'audio1',
+                url: 'https://www.0dutv.com/upload/dance/20200316/C719452E3C7834080007662021EA968E.mp3'
+                }
+            ]
         };
     },
+    mounted() {
+    const audioElement = this.$refs.myAudio;
+
+    // Check if the audio is paused, and then play it
+    if (audioElement.paused) {
+      audioElement.play().then(() => {
+        console.log('Audio playback started successfully.');
+      }).catch(error => {
+        console.error('Error starting audio playback:', error.message);
+      });
+    }
+  },
     methods: {
         async getSongDesc() {
             try {
@@ -47,7 +58,9 @@ export default Vue.extend({
                 let bmp = Number(this.randBMP.toString().slice(0,-1)+'0');
                 this.info = await this.getKGData(bmp);
                 this.url = this.info[0]['songURI'].value.slice(1, -1);
-                console.log('this.info ', this.url);
+                this.audioList[0]['url'] = this.url;
+                this.audioSource = this.url;
+                console.log('this.url ', this.url);
             } catch(err){
                     console.error('Error fetching random value:', err.stack);
             };
@@ -94,6 +107,10 @@ export default Vue.extend({
 </script>
 
 <style>
+#app {
+  text-align: center;
+  margin-top: 50px;
+}
 
 .result-container {
     margin-top: 20px;
