@@ -13,14 +13,6 @@ const corsOptions = {
     origin : ['http://localhost:8080'], 
  };
 
-app.get('/getRandPulse', cors(corsOptions), (req, res) => {
-    console.log('get a heart beat value');
-    let randBMP = getRandValue(distribution, pulseDist);
-    console.log(randBMP);
-    
-    return res.json({ randBMP });
-});
-
 app.get('/', (req, res) => {
     console.log('hello');
     res.send('Hello from response');
@@ -99,7 +91,7 @@ function getNextHeartRate(currentBMP) {
 }
 
 app.get('/currentBPM', async function (req, res) {
-    await sleep(2000);
+    await sleep(5000);
     randBMP = getNextHeartRate(randBMP);
     console.log(randBMP);
     res.json({randBMP});
