@@ -1,6 +1,8 @@
 <template>
     <div>
         <div id="startButton">
+            <input v-model="device" placeholder="enter device link">
+            
             <button class="beautiful-button" @click="getTD">Start</button>
         </div>
         <!-- <div v-if="this.randBMP !== null" class="result-container">
@@ -11,7 +13,7 @@
         <div v-if="this.currentData !== null" class="result-container">
             <p class="result-label">Song's Thing Description:</p>
             <p class="result-value">{{ this.currentData }}</p>
-
+    <input v-model="text">
             <div v-if="this.info !== null" class="result-container">
             <p class="result-label">Song's URI:</p>
             <p class="result-value">{{ this.info }}</p> -->
@@ -54,7 +56,8 @@ export default Vue.extend({
             randBMP: null,
             audioSource: null,
             playerOn: false,
-            genre: null
+            genre: null,
+            device: ''
         };
     },
     components: {
@@ -75,7 +78,8 @@ export default Vue.extend({
                 .then(async (WoT) => {
                     try {
                         console.log("1");
-                        const td = await WoT.requestThingDescription("http://localhost:3001/thingDescription");
+                        console.log(this.device);
+                        const td = await WoT.requestThingDescription(this.device);
                         console.log(td);
                         const thing = await WoT.consume(td);
                         thing.subscribeEvent("currentHeartRate", async (data) => {

@@ -28,7 +28,7 @@ export default Vue.extend({
             info: null,
             url: null,
             currentAudioName: '',
-            audioSource: null,
+            audioSource: ,
             audioList: [
                 {
                 name: 'audio1',
