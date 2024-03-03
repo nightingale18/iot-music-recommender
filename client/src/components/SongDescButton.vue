@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="this.audioSource !== null && this.audioSource !== undefined" class="result-container">
+        <div v-if="this.playerOn" class="result-container">
             <p class="result-label">Song's recommendation:</p>
             <p class="result-value">{{ this.genre }}</p>
 
@@ -17,24 +17,15 @@ import Vue from 'vue';
 
 export default Vue.extend({
     props: {
-        randBMP: String,
         audioSource: String,
-        genre: String
+        genre: String,
+        playerOn: Boolean
     },
     data() {
         return {
-            randBMP: null,
-            info: null,
-            url: null,
-            currentAudioName: '',
             audioSource: null,
             genre: null,
-            audioList: [
-                {
-                name: 'audio1',
-                url: 'https://www.0dutv.com/upload/dance/20200316/C719452E3C7834080007662021EA968E.mp3'
-                }
-            ]
+            playerOn: false
         };
     },
     mounted() {

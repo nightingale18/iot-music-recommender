@@ -1,8 +1,7 @@
 <template>
     <div>
         <div id="startButton">
-            <input v-model="device" placeholder="enter device link">
-            
+            <input v-model="device" placeholder="enter device resource">
             <button class="beautiful-button" @click="getTD">Start</button>
         </div>
 
@@ -11,8 +10,8 @@
             <p class="result-value">{{ this.randBMP }}</p>
             </div>
   
-            <div v-if="this.audioSource !== null" class="result-container">
-                <SongDescButton :audioSource=this.audioSource :genre=this.genre />
+            <div v-if="this.playerOn" class="result-container">
+                <SongDescButton :audioSource=this.audioSource :genre=this.genre :playerOn=this.playerOn />
             </div>
 
     </div>
@@ -30,14 +29,12 @@ const { HttpClientFactory } = require("@node-wot/binding-http");
 export default Vue.extend({
     props: {
         randBMP: String,
-        audioSource: String
+        audioSource: String,
+        playerOn: Boolean
     },
     
     data() {
         return {
-            currentData: null,
-            info: null,
-            url: null,
             randBMP: null,
             audioSource: null,
             playerOn: false,
@@ -68,8 +65,8 @@ export default Vue.extend({
                         console.log(td);
                         const thing = await WoT.consume(td);
                         thing.subscribeEvent("currentHeartRate", async (data) => {
-                            this.currentValue = await data.value();
-                            this.randBMP = this.currentValue.randBMP;
+                            let currentValue = await data.value();
+                            this.randBMP = currentValue.randBMP;
                             console.log("currentHeartRate:", this.randBMP);
                             await this.getSongDesc();
                             console.log('audioSource ',this.audioSource);

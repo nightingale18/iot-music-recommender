@@ -8,8 +8,6 @@ export default {
     data() {
         return {
             randBMP: null,
-            info: null,
-            url: null,
             audioSource: null,
             genre: null
         }
@@ -18,14 +16,14 @@ export default {
         async getSongDesc() {
             try {
                 
-                let bmp = Number(this.randBMP.toString().slice(0,-1)+'0');
+                const bmp = Number(this.randBMP.toString().slice(0,-1)+'0');
              
-                this.info = await this.getKGData(bmp);
-                console.log("getSongthis.infoDesc", this.info);
-                this.url = this.info[0]['songURI'].value.slice(1, -1);
-                this.genre = this.info[0]['genre'].value;
-                this.audioSource = this.url;
-                console.log('this.url ', this.url);
+                const info = await this.getKGData(bmp);
+                console.log("getSongthis.infoDesc", info);
+                const url = info[0]['songURI'].value;
+                this.genre = info[0]['genre'].value;
+                this.audioSource = url;
+                console.log('url ', url);
             } catch(err){
                     console.error('Error fetching random value:', err.stack);
             };
@@ -34,7 +32,7 @@ export default {
         getKGData(bmp) {
             const query = `\
             prefix dbo: <http://dbpedia.org/ontology/> \
-            prefix music: <http://localhost:3002/#> \
+            prefix music: <http://localhost:3000/#> \
             prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> \
             prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> \
             select ?songURI ?genre where {\
