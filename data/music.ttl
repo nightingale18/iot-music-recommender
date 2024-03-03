@@ -13,7 +13,7 @@
               vann:preferredNamespacePrefix "music" ;
               vann:preferredNamespaceUri "http://localhost:3000/" ;
               rdf:type owl:Ontology ;
-              rdfs:comment "This is an Ontology to describe Music and varous genres. @en<mailto:%22This%20is%20an%20Ontology%20to%20describe%20Music%20and%20varous%20genres.%22@en>"^^xsd:string;
+              rdfs:comment "This is an Ontology to describe Music and various genres";
               owl:versionInfo "0.0.1" .
 
 music:MusicGenre rdf:type rdfs:Class, owl:Class;
