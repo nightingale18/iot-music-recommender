@@ -5,23 +5,7 @@
             
             <button class="beautiful-button" @click="getTD">Start</button>
         </div>
-        <!-- <div v-if="this.randBMP !== null" class="result-container">
-            <p class="result-label">Passed Value:</p>
-            <p class="result-value">{{ this.randBMP }}</p>
-        </div> -->
-<!-- 
-        <div v-if="this.currentData !== null" class="result-container">
-            <p class="result-label">Song's Thing Description:</p>
-            <p class="result-value">{{ this.currentData }}</p>
-    <input v-model="text">
-            <div v-if="this.info !== null" class="result-container">
-            <p class="result-label">Song's URI:</p>
-            <p class="result-value">{{ this.info }}</p> -->
 
-            <!-- <a v-bind:href="this.info">Song's recommendation</a> -->
-        <!-- </div> -->
-            <!-- <a v-bind:href="this.info">Song's recommendation</a>  -->
-        
         <div v-if="this.randBMP !== null && this.randBMP !== undefined" class="result-container">
             <p class="result-label">Current Value:</p>
             <p class="result-value">{{ this.randBMP }}</p>
@@ -35,6 +19,7 @@
 </template>
 
 <script lang="ts">
+
 import Vue from 'vue';
 import SongDescButton from './SongDescButton.vue';
 import KGMethods from './KnowledgeGraph.vue';
@@ -89,38 +74,12 @@ export default Vue.extend({
                             await this.getSongDesc();
                             console.log('audioSource ',this.audioSource);
                             this.playerOn = true;
-                            
                         });
-                            // try {
-                            //     const reqOptions = {
-                            //         method: 'POST',
-                            //         headers: { 'Content-Type': 'application/json' },
-                            //         body: JSON.stringify({ bmp: this.currentData })
-                                    
-                            //     };
-                        
-                                // console.log(this.currentData)
-                                // const response = await fetch('http://localhost:3002/getSongDesc', reqOptions);
-                                // const data = await response.json();
-                                // this.info = data.uri;
-                            // } catch(err){
-                            //         console.error('Error fetching random value:', err.stack);
-                            // };
-                            
-                    
-
-                        
                     } catch (err) {
                         console.log("Script error:", err);
                     }
                     this.sleep(2000);
                 })
-
-        
-                
-                // const response = await fetch('http://localhost:3000/thingDescription', reqOptions);
-                // const data = await response.json();
-                // this.info = data.uri;
             .catch((err) => {
                     console.error('Error fetching random value:', err.stack);
             });
@@ -150,15 +109,6 @@ export default Vue.extend({
 }
 
 .beautiful-button {
-    /* background-color: #ffedd8; /* Blue background color, you can customize */
-  /* color: #ffffff; White text color, you can customize */
-  /* padding: 10px 20px; Adjust padding as needed */
   font-size: 16px;
-  /* border: none; */
-  /* border-radius: 5px; Rounded corners, you can adjust this */
-  /* cursor: pointer; */
-  /* transition: background-color 0.3s ease; */
-
-  /* Add more styles based on your design */
 }
 </style>
