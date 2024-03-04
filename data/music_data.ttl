@@ -1,6 +1,5 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix music: <http://localhost:3000/#> .
 @prefix schema: <http://schema.org/>.
 @prefix : <http://localhost:3000/>.
