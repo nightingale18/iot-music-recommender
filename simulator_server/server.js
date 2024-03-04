@@ -8,7 +8,13 @@ const app = express();
 
 app.use(cors());
 
-// enabling CORS for some specific origins only. 
+/*
+CORS - Cross-Origin Resource Sharing
+Using a node.js package - CORS for middleware in express
+enabling CORS for some specific origins only.
+CORS is required to allow a front-end client to make request 
+*/
+
 const corsOptions = { 
     origin : ['http://localhost:8080'], 
  };
@@ -18,7 +24,7 @@ app.get('/', (req, res) => {
     res.send('Hello from response');
 });
 
-app.get('/thingDescription', (req, res) => {
+app.get('/thingDescription', cors(corsOptions), (req, res) => {
     const thingDesc  = 
     {
         "@context": 
@@ -44,6 +50,7 @@ app.get('/thingDescription', (req, res) => {
 });
 
 let randBMP = 60;
+let isFirstRun = true;
 
 function randomInt(maxInt) {
     return Math.floor(Math.random()*maxInt);
@@ -73,9 +80,10 @@ function getNextHeartRate(currentBMP) {
 }
 
 app.get('/currentBPM', async function (req, res) {
-    await sleep(5000);
+    if (!isFirstRun) await sleep(5000);
     randBMP = getNextHeartRate(randBMP);
     console.log(randBMP);
+    isFirstRun = false;
     res.json({randBMP});
 });
 
