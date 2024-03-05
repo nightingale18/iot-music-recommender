@@ -33,11 +33,11 @@ export default Vue.extend({
 
         // Check if the audio is paused, and then play it
         if (audioElement.paused) {
-        audioElement.play().then(() => {
-            console.log('Audio playback started successfully.');
-        }).catch(error => {
-            console.error('Error starting audio playback:', error.message);
-        });
+            audioElement.play().then(() => {
+                console.log('Audio playback started successfully.');
+            }).catch(error => {
+                console.error('Error starting audio playback:', error.message);
+            });
         }
   },
 });

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="startButton">
-            <input v-model="device" placeholder="enter device resource">
+            <input v-model="device" placeholder="enter URI desc">
             <button class="beautiful-button" @click="getTD">Start</button>
         </div>
 
@@ -26,6 +26,16 @@ import KGMethods from './KnowledgeGraph.vue';
 const { Servient } = require("@node-wot/core");
 const { HttpClientFactory } = require("@node-wot/binding-http");
 
+ /* 
+    `playerOn`: is used in this and `SongDescButton` component 
+    as an indicator function to play an audio element.
+
+    `audioSource`: is initialized in `KnowledgeGraph` component
+    to be used by the `SongDescButton` called here.
+
+    `randBMP`: is initialized in `getTD` function and
+    is used to 
+*/
 export default Vue.extend({
     props: {
         randBMP: String,
@@ -50,6 +60,16 @@ export default Vue.extend({
         sleep(ms) {
             return new Promise((resolve) => setTimeout(resolve, ms));
         },
+        /* 
+            `getTD()`: requests TD by input field
+            and consumes it and subscribes on the event,
+            declared in TD properties, and update the 
+            current heartbeat value.
+
+            `getSongDesc`: call the function from `KnowledgeGraph`
+            component where the this.audioSource and this.genre
+            would be defined. 
+        */
         async getTD() {
 
             const servient = new Servient();
@@ -59,17 +79,12 @@ export default Vue.extend({
                 .start()
                 .then(async (WoT) => {
                     try {
-                        console.log("1");
-                        console.log(this.device);
                         const td = await WoT.requestThingDescription(this.device);
-                        console.log(td);
                         const thing = await WoT.consume(td);
                         thing.subscribeEvent("currentHeartRate", async (data) => {
                             let currentValue = await data.value();
                             this.randBMP = currentValue.randBMP;
-                            console.log("currentHeartRate:", this.randBMP);
                             await this.getSongDesc();
-                            console.log('audioSource ',this.audioSource);
                             this.playerOn = true;
                         });
                     } catch (err) {

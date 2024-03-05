@@ -13,17 +13,18 @@ export default {
         }
     },
     methods: {
+        /* `getSongDesc` function makes a SPARQL request, 
+            with the help of function `getKGData`,
+            to a Knowledge Graph
+        */
         async getSongDesc() {
             try {
-                
                 const bmp = Number(this.randBMP.toString().slice(0,-1)+'0');
              
                 const info = await this.getKGData(bmp);
-                console.log("getSongthis.infoDesc", info);
                 const url = info[0]['songURI'].value;
                 this.genre = info[0]['genre'].value;
                 this.audioSource = url;
-                console.log('url ', url);
             } catch(err){
                     console.error('Error fetching random value:', err.stack);
             };

@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const { distribution, pulseDist, getRandValue, genNormDistrib, distribDiv, pulseDistDiv } = require('./helper');
 
 const PORT = process.env.PORT || 3001;
 
@@ -9,12 +8,10 @@ const app = express();
 app.use(cors());
 
 /*
-CORS - Cross-Origin Resource Sharing
+CORS - Cross-Origin Resource Sharing 
+is required to allow a front-end client to make request to TD
 Using a node.js package - CORS for middleware in express
-enabling CORS for some specific origins only.
-CORS is required to allow a front-end client to make request 
 */
-
 const corsOptions = { 
     origin : ['http://localhost:8080'], 
  };
@@ -53,18 +50,15 @@ let randBMP = 60;
 let isFirstRun = true;
 
 function randomInt(maxInt) {
-    return Math.floor(Math.random()*maxInt);
+    return Math.floor(Math.random() * maxInt);
 }
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// 60 -> 65 -> 70 -> 80 -> ... -> 180 -> 120 -> 50 -> 60 -> ...
-// Get Random nr between -5 and 5
-
-function getRandomNr(currentBMP){
-    
+// Get Random number which has a trend to increase
+function getNextHeartRate(currentBMP) {
     let nextBMP = currentBMP + randomInt(15) - randomInt(8);
     if (nextBMP < 50) {
         nextBMP += randomInt(30);
@@ -74,15 +68,14 @@ function getRandomNr(currentBMP){
     return nextBMP;
 }
 
-function getNextHeartRate(currentBMP) {
-    let gRN = getRandomNr(currentBMP);
-    return gRN;
-}
-
+/*  it handles HTTP GET request with a `/currentBPM`
+    returns a generated random heartbeat value as `randBMP`
+    every 5 seconds except the first run
+    by calling a function `getNextHeartRate` 
+*/
 app.get('/currentBPM', async function (req, res) {
     if (!isFirstRun) await sleep(5000);
     randBMP = getNextHeartRate(randBMP);
-    console.log(randBMP);
     isFirstRun = false;
     res.json({randBMP});
 });
