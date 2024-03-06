@@ -7,6 +7,7 @@
 - High interoperability
 - Suitable for multiple devices by implemented W3C Thing Descriptions principles
 - Complete documentation and examples
+- Demo
 
 ## Idea
 Implement a Solid app with a music player and make it possible to work with all IoT devices which handle a heartbeat value.
@@ -19,7 +20,7 @@ cd client && npm install
 ```
 
 ## Use
-### Step one： start a server which simulates an average heart beat per minute
+### Step one： expose a Thing which simulates an average heart beat per minute
 ```
 node simulator_server/server.js
 ```
@@ -34,10 +35,14 @@ cd client && npm run serve
 
 npx @solid/community-server -c @css:config/file.json -f data/
 ```
-### Step four: enter IoT device URI, e.g. `http://localhost:3001/ThingDescription`
+### Step four: enter URI description, e.g. `http://localhost:3001/ThingDescription`
 
 ![alt text](https://github.com/nightingale18/iot-music-recommender/blob/main/demo/start_view.png?raw=true)
 
+
+### Demo
+
+[Demo](https://github.com/nightingale18/iot-music-recommender/blob/main/demo/demo_1%3A00.mp4) is provided to demonstrate the work of the application.
 
 ### Implemented phases
 
@@ -52,18 +57,18 @@ npx @solid/community-server -c @css:config/file.json -f data/
 ### Next steps:
 
 - enhance the TD by providing the  `properties` and  `actions` property description to make our simulator stoppable by some button;
-- use a different pod provider as cloud storage e.g. DropBox;
+- use a different pod provider, e.g. Inrupt Pod Spaces;
 - implement Authentication and Authorization systems, and grant access to pods;
 - test with different IoT devices.
 
 
 
 ## The following RDF graphs where constructed via a <a href="https://www.ldf.fi/service/rdf-grapher"> rdf-grapher tool </a>
-### RDF graph for own onthology from `music.ttl`
+### RDF graph for own ontology from `music.ttl`
 
 ![alt text](https://github.com/nightingale18/iot-music-recommender/blob/main/png/rdf-graph-music.png?raw=true)
 
-### RDF graph of using own onthology from `music_data.ttl`
+### RDF graph with `music` instances from `music_data.ttl`
 
 ![alt text](https://github.com/nightingale18/iot-music-recommender/blob/main/png/rdf-graph-music-data.png?raw=true)
 
